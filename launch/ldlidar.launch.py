@@ -8,8 +8,8 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             name='serial_port_candidates', 
-            default_value='/dev/ttyACM2',
-            # description='LD06 Serial Port'
+            default_value="['/dev/ttyldlidar0001']",
+            description='LD06 Serial Port'
         ),
         DeclareLaunchArgument(
             name='topic_name', 
@@ -32,7 +32,7 @@ def generate_launch_description():
             name='ldlidar',
             output='screen',
             parameters=[
-                # {'serial_port_candidates': LaunchConfiguration("serial_port_candidates")},
+                {'serial_port_candidates': LaunchConfiguration("serial_port_candidates")},
                 {'topic_name': LaunchConfiguration("topic_name")},
                 {'lidar_frame': LaunchConfiguration("lidar_frame")},
                 {'range_threshold': LaunchConfiguration("range_threshold")}
